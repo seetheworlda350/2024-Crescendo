@@ -1,0 +1,87 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7081867456436157,
+      "y": 6.563179969787598
+    },
+    "rotation": 59.46881854694502
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot Note Routine 50"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
+        {
+          "type": "race",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Amp to W1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Stall Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "Amp W1 to subwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Source Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.8
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot Note Routine 45 Align"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AMP W1 Subwoofer Exit"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "2PC",
+  "choreoAuto": true
+}
