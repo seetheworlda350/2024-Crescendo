@@ -3,11 +3,11 @@ import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeSubsystemNew {
+public class IntakeSubsystemNew extends SubsystemBase{
+    
     final private CANSparkMax intakeMotorUpperNew;
     final private CANSparkMax intakeMotorLowerNew;
     public IntakeSubsystemNew() {

@@ -1,3 +1,4 @@
+
 package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -17,13 +18,13 @@ public class BetterIntakeReverse extends Command {
 	}
 
 	@Override
-	public void execute(){
+	public void execute() {
 		intake.run(-Constants.Intake.upperIntakeSpeed, -Constants.Intake.lowerIntakeSpeed);
 		shooter.setNeoSpeeds(-0.5);
 	}
 
 	@Override
-	public void end(boolean interrupted){
+	public void end(boolean interrupted) {
 		intake.run(0, 0);
 		shooter.setNeoSpeeds(0);
 	}

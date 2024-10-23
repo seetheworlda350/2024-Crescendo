@@ -1,4 +1,5 @@
 package frc.robot.commands.intake;
+
 import com.revrobotics.CANSparkBase;
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
@@ -12,22 +13,20 @@ import frc.robot.subsystems.intake.IntakeSubsystemNew;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 
 public class IntakeCommandNew extends Command {
-	private final IntakeSubsystemNew intake;
-	private final ShooterSubsystem shooter;
+    private final IntakeSubsystemNew intake;
+    private final ShooterSubsystem shooter;
 
-    public IntakeCommandNew(IntakeSubsystemNew intake, ShooterSubsystem shooter, LaserCANSensor intakeLaser, LaserCANSensor shooterLaser) {
+    public IntakeCommandNew(IntakeSubsystemNew intake, ShooterSubsystem shooter, LaserCANSensor intakeLaser,
+            LaserCANSensor shooterLaser) {
         this.intake = intake;
-		this.shooter = shooter;
+        this.shooter = shooter;
+        addRequirements(intake);
     }
+
     public void execute() {
         intake.run(Constants.Intake.lowerIntakeSpeed, Constants.Intake.upperIntakeSpeed);
     }
 
-	public boolean isFinished() {
-		
-            return false;
-		
-    }
     public void end(boolean interrupted) {
         intake.run(0, 0);
     }
