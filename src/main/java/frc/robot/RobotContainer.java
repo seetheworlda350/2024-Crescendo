@@ -29,10 +29,12 @@ import frc.robot.commands.shooter.TempShooterCommand;
 import frc.robot.commands.swervedrive.drivebase.RotateToTag;
 import frc.robot.commands.swervedrive.drivebase.TeleopDrive;
 import frc.robot.subsystems.climb.ClimbSubsystem;
+import frc.robot.subsystems.intake.IntakeSubsystemNew;
 import frc.robot.subsystems.sensors.LaserCANSensor;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.vision.Photonvision;
+import frc.robot.commands.intake.IntakeCommandNew;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -42,7 +44,7 @@ import frc.robot.subsystems.vision.Photonvision;
 public class RobotContainer {
 
     // The robot's subsystems and commands are defined here...
-    private final SendableChooser<Command> autoChooser;
+    //private final SendableChooser<Command> autoChooser;
 
     public final SwerveSubsystem swerve = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
             "swerve/kraken"));
@@ -52,9 +54,8 @@ public class RobotContainer {
     final PS5Controller driverController = new PS5Controller(0);
 
     public static final Photonvision photonvision = new Photonvision(Constants.Vision.shooterMonoCam, Constants.Vision.lowerRobotToCamera);
-
-
-
+    public final IntakeSubsystemNew intake = new IntakeSubsystemNew();
+//    public final IntakeCommandNew intakeCommandNew = new IntakeCommandNew(new IntakeSubsystemNew(), new ShooterSubsystem(), new LaserCANSensor(1), new LaserCANSensor(0));
     public  final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     public  final LaserCANSensor intakeLaser = new LaserCANSensor(1);
     public  final LaserCANSensor shooterLaser = new LaserCANSensor(0);
@@ -64,20 +65,20 @@ public class RobotContainer {
     private final ClimbUpCommand climbUpCommand = new ClimbUpCommand(climbSubsystem);
     private final ClimbDownCommand climbDownCommand = new ClimbDownCommand(climbSubsystem);
 
-    private final AutoFactory autoFactory;
+    //private final AutoFactory autoFactory;
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        autoFactory = new AutoFactory(this);
+        //autoFactory = new AutoFactory(this);
 
-        registerPathplannerCommands();
+        //registerPathplannerCommands();
         // Configure the trigger bindings
-        configureBindings();
+        //configureBindings();
 
         //Add Auto Options
-        autoChooser = new SendableChooser<>();
+        /*autoChooser = new SendableChooser<>();
         autoChooser.addOption("Two piece mid W2", autoFactory.getAutonomousCommand("Mid Two Piece"));
         autoChooser.addOption("Two piece amp W3", autoFactory.getAutonomousCommand("Amp Two Piece"));
         autoChooser.addOption("Two piece source W2", autoFactory.getAutonomousCommand("Source Two Piece"));
@@ -143,6 +144,7 @@ public class RobotContainer {
         // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
         new Trigger(driverController::getOptionsButton).onTrue(Commands.runOnce(swerve::zeroGyro));
 //        new Trigger(driverController::getTriangleButton).toggleOnTrue(intakeCommand);
+        new Trigger(driverController::getTriangleButton).toggleOnTrue(new IntakeCommandNew(intake, shooterSubsystem, intakeLaser, shooterLaser));
         new Trigger(driverController::getTriangleButton).toggleOnTrue(new ShooterPodiumCommand(shooterSubsystem));
         new Trigger(driverController::getCircleButton).toggleOnTrue(new ShooterCommandToAngle(shooterSubsystem, Constants.Shooter.angleBackHardstop - 8));
 //        new Trigger(driverController::getL1Button).toggleOnTrue(new RotateToTag(swerve));
@@ -172,7 +174,8 @@ public class RobotContainer {
      */
     public Command getAutonomousCommand() {
         // An example command will be run in autonomous
-        return autoChooser.getSelected();
+        //return autoChooser.getSelected();
+        return null;
     }
 
     public void setDriveMode() {
@@ -182,7 +185,7 @@ public class RobotContainer {
 
 
 
-        NamedCommands.registerCommand("Shoot Note", autoFactory.shootNote());
+        /*NamedCommands.registerCommand("Shoot Note", autoFactory.shootNote());
         NamedCommands.registerCommand("Constant Shooter", autoFactory.constantShooter());
         NamedCommands.registerCommand("Instant Constant Shooter", autoFactory.constantShooterInstant());
 //        NamedCommands.registerCommand("Constant Shooter Hardstop", autoFactory.constantShooterHardStop());
@@ -242,7 +245,7 @@ public class RobotContainer {
 
         NamedCommands.registerCommand("Shoot Note Routine 25.5", autoFactory.shootNoteRoutine(25.5, false));
         NamedCommands.registerCommand("Shoot Note Routine 25.5 Align", autoFactory.shootNoteRoutine(25.5, true));
-
+*/
 
     }
 

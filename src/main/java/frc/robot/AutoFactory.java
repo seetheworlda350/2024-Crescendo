@@ -1,4 +1,4 @@
-package frc.robot;
+/*package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -33,7 +33,7 @@ public class AutoFactory {
     public Command followPath(String pathName) {
         PathPlannerPath path = PathPlannerPath.fromPathFile(pathName);
         return AutoBuilder.followPath(path);
-    }
+    }*/
 
 //	public Command followChoreoPath(String pathname, boolean resetOdometry) {
 //		PathPlannerPath path = PathPlannerPath.fromChoreoTrajectory(pathname);
@@ -49,7 +49,7 @@ public class AutoFactory {
 //		return AutoBuilder.followPath(path);
 //	}
 
-    public Command getAutonomousCommand(String pathName) {
+    /*public Command getAutonomousCommand(String pathName) {
         // Create a path following command using AutoBuilder. This will also trigger event markers.
         return new PathPlannerAuto(pathName);
     }
@@ -117,7 +117,7 @@ public class AutoFactory {
     /**
      * @param shooterAngle Angle of the shooter when
      */
-    public Command shooterAlign(double shooterAngle) {
+    /*public Command shooterAlign(double shooterAngle) {
         return new SequentialCommandGroup(
                 new ParallelRaceGroup(
                         new WaitCommand(.35),
@@ -196,7 +196,7 @@ public class AutoFactory {
                     new WaitCommand(1)
             );
         }
-    }
+    }*/
 
 //    public Command sourceIntakeLaunch() {
 //        return Commands.startEnd(
@@ -322,4 +322,4 @@ public class AutoFactory {
 //				)
 //		);
 //	}
-}
+
